@@ -1,0 +1,111 @@
+<html>
+
+<head>
+    <title>Share splitter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        .shared {
+            background-color: rgb(245, 132, 132);
+        }
+
+        .single {
+            background-color: rgb(174, 174, 240);
+        }
+
+        .sumElement {
+            float: left;
+            margin-left: 5px;
+            padding: 5px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <b>Shared calculator:</b><br>
+    <table>
+        <tr>
+            <th>Shared</th>
+            <td><input id="shared" type="number" type="text" /></td>
+        </tr>
+        <tr>
+            <th>Single</th>
+            <td><input id="single" type="number" type="text" /></td>
+        </tr>
+        <tr>
+            <th>Added</th>
+            <td id="added"></td>
+        </tr>
+        <tr>
+            <th>Sum</th>
+            <td id="sum"></td>
+        </tr>
+    </table>
+
+    <script>
+        const sharedInput = document.getElementById("shared");
+        const singleInput = document.getElementById("single");
+        const addedElem = document.getElementById("added");
+        const sumElem = document.getElementById("sum");
+
+        let lastFocus = undefined;
+
+        function addNumber(num, clazz) {
+            const div = document.createElement('div');
+            div.className = `sumElement ${clazz}`;
+            div.innerHTML = num;
+            div.addEventListener("click", e => {
+                var tgt = e.target;
+                tgt.parentNode.removeChild(tgt);
+                setSum();
+
+                if(lastFocus !== undefined) {
+                    lastFocus.focus();
+                }
+            });
+
+
+            addedElem.appendChild(div);
+            setSum();
+
+        }
+
+        function setSum() {
+            let sum = 0;
+            for (let elem of document.getElementsByClassName("single")) {
+                sum += Number(elem.innerHTML);
+            }
+            for (let elem of document.getElementsByClassName("shared")) {
+                sum += Number(elem.innerHTML) / 2;
+            }
+
+            sumElem.innerHTML = (Math.round(sum*100)/100);
+        }
+
+        function addListener(elem, clazz) {
+            elem.addEventListener("focus", e => {
+                lastFocus = elem;
+            });
+
+            elem.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    const val = elem.value;
+                    elem.value = '';
+                    event.preventDefault();
+
+                    addNumber(Number(val), clazz);
+                }
+            });
+        }
+
+        addListener(sharedInput, 'shared');
+        addListener(singleInput, 'single');
+
+
+
+    </script>
+
+</body>
+
+</html>

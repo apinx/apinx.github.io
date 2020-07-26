@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <title>Java Manifest Reader</title>
+
+    <style>
+        div {
+        }
+        textarea {
+            width: 100%; 
+            margin-top: 10px;
+            min-height: 200px;
+        }
+
+        .box {
+            border: 1px solid black; 
+            padding: 10px;
+            background-color: #eee;
+        }
+
+        body {
+            background-color: #123;
+        }
+
+        #wrapper {width: 100%; height: 100%;}
+
+        .description {
+            color: #555;
+            padding: 20px;
+            font-size: 20px;
+        }
+
+
+    </style>
+        <script type="text/javascript" src="lib/zip.js"></script>
+        <script type="text/javascript" src="parser.js"></script>
+
+</head>
+
+<body>
+
+    <div id="wrapper" ondragover="dragOverHandler(event);" ondrop="dropHandler(event);">
+        <div id="shower" class="box">Show manifest here</div>
+        <textarea onkeyup="onKeyUp();" id="org" class="box" placeholder="Drag jar or copy manifest here" ></textarea>
+        <div class="description">Drag'n'Drop your Manifest, Jar-file or simple copy-paste the manifest content for nice formatting!<br><br>(And no worries, everything happens in your browser, nothing gets transmitted!)</div>
+        <div class="description">If you should run into trouble, write assistance@apinx.dk</div>
+    </div>
+</body>
+</html>

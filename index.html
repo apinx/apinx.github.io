@@ -1,0 +1,90 @@
+<html>
+
+<head>
+    <title>apinx.dk</title>
+    <meta name="description" content="A collection of games. Currently contains Memory, a memory challenging game.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            background-color: #123;
+            color: gray;
+            font-size: 16px;
+            line-height: 1.2;
+            margin:0px;
+        }
+
+        .wrapper {
+            display: inline;
+        }
+
+        .entrywrapper {
+            padding: 10px;
+            float: left;
+            width: 100%;
+        }
+
+        .gamewrapper {
+            border: 1px solid black;
+            border-radius: 7px;
+            padding: 20px;
+            padding-top: 10px;
+            width: calc(100% - 60px);
+            margin: 0px;
+        }
+
+        @media(min-width:601px) {
+            body {
+                font-size: 100%;
+            }
+            .gamewrapper {
+                width: 230px;
+                min-height: 400;
+            }
+            .entrywrapper {
+                width: unset;
+            }
+        }
+
+        .title {
+            color: lightgray;
+            font-size: 200%;
+        }
+
+        .description {
+            font-style: italic;
+            font-size: 100%;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        a {
+            color: gray;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="entrywrapper">
+            <div class="gamewrapper">
+                <div class="title">apinx.dk</div>
+                <div class="description">This page hosts different applications / games created and managed by apinx.dk.<br>If you need to contact me, try assistance@apinx.dk
+                </div>
+            </div>
+        </div>
+        <div class="entrywrapper">
+            <a href="/javamanifest/">
+                <div class="gamewrapper">
+                    <div class="title">App: Java Manifest Viewer</div>
+                    <div class="description">If you are tired of trying to figure out the import/exports in Java manifest files(for OSGI for example), this will help.</div>
+                </div>
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>
